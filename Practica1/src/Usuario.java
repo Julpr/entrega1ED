@@ -71,7 +71,7 @@ public abstract class Usuario implements Serializable {
 	public void crearFicheroObjetoEstudiante(Estudiante[] e11)  {
 		FileOutputStream fichero = null;
 		try {
-			fichero = new FileOutputStream("./"+"Estudiantes"+".obj");
+			fichero = new FileOutputStream("Practica1/src/Usuarios/"+"Estudiantes"+".obj");
 			ObjectOutputStream estudiante = new ObjectOutputStream(fichero);
 			estudiante.writeObject(e11);
 			fichero.close();
@@ -86,7 +86,7 @@ public abstract class Usuario implements Serializable {
 	public void crearFicheroObjetoProfesor(Profesor[] p)  {
 		FileOutputStream fichero = null;
 		try {
-			fichero = new FileOutputStream("./"+"Profesores"+".obj");
+			fichero = new FileOutputStream("Practica1/src/Usuarios/"+"Profesores"+".obj");
 			ObjectOutputStream profesor = new ObjectOutputStream(fichero);
 			profesor.writeObject(p);
 			fichero.close();
@@ -101,7 +101,7 @@ public abstract class Usuario implements Serializable {
 	public void crearFicheroObjetoAdministrador(Administracion[] a1)  {
 		FileOutputStream fichero = null;
 		try {
-			fichero = new FileOutputStream("./"+"Administracion"+".obj");
+			fichero = new FileOutputStream("Practica1/src/Usuarios/"+"Administracion"+".obj");
 			ObjectOutputStream administrador = new ObjectOutputStream(fichero);
 			administrador.writeObject(a1);
 			fichero.close();
@@ -119,7 +119,7 @@ public abstract class Usuario implements Serializable {
 	public void crearObjetoDesdeElFicheroEstudiante(String Estudiantes) {
 
 		try {
-			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Estudiantes+".obj"));
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("Practica1/src/Usuarios/"+Estudiantes+".obj"));
 			Estudiante[] estudianteObjeto =  (Estudiante[])traerObjeto.readObject();
 			traerObjeto.close();
 			for (Estudiante estudiante : estudianteObjeto) {
@@ -137,7 +137,7 @@ public abstract class Usuario implements Serializable {
 	public void crearObjetoDesdeElFicheroProfesor(String Profesores) {
 
 		try {
-			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Profesores+".obj"));
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("Practica1/src/Usuarios/"+Profesores+".obj"));
 			Profesor[] profesorObjeto =  (Profesor[])traerObjeto.readObject();
 			traerObjeto.close();
 			for (Profesor profesor2 : profesorObjeto) {
@@ -154,7 +154,7 @@ public abstract class Usuario implements Serializable {
 	public void crearObjetoDesdeElFicheroAdministracion(String Administraciones) {
 
 		try {
-			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Administraciones+".obj"));
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("Practica1/src/Usuarios/"+Administraciones+".obj"));
 			Administracion[] administracionObjeto =  (Administracion[])traerObjeto.readObject();
 			traerObjeto.close();
 			for (Administracion administracion2 : administracionObjeto) {

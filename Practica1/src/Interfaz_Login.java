@@ -28,7 +28,7 @@ public class Interfaz_Login extends JFrame{
 	private JFrame frame_Login;
 	private JTextField txtLogin_id;
 	private JTextField txtLogin_pw;
-	private Estudiante[] estudiantes= {};
+	private Usuario usuarios;
 
 	public JFrame getFrame_Login() {
 		return frame_Login;
@@ -100,9 +100,6 @@ public class Interfaz_Login extends JFrame{
 		btnLogin_ingresar.setBounds(132, 309, 117, 29);
 		frame_Login.getContentPane().add(btnLogin_ingresar);
 		btnLogin_ingresar.addActionListener(new ActionListener() {
-
-
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				//JOptionPane.showMessageDialog(null, txtLogin_id.getText().substring(0, 3));
 
@@ -111,13 +108,15 @@ public class Interfaz_Login extends JFrame{
 					JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
 
 				else {
+					System.out.println("Hola");
+					
 					int i=0;
-					while(i<estudiantes.length && 
-							estudiantes[i].getCedula().compareTo(txtLogin_id.getText())!=0) {
+					while(i<usuarios.e.length && 
+							usuarios.e[i].getCedula().compareTo(txtLogin_id.getText())!=0) {
 						i++;	
 					}
 					
-					if(i==estudiantes.length){
+					if(i==usuarios.e.length){
 						JOptionPane.showMessageDialog(null, "La identificación ingresada no existe");
 					}else {
 						Interfaz_estudiante IE= new Interfaz_estudiante();

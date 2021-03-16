@@ -1,6 +1,7 @@
 
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -10,8 +11,6 @@ public class Administracion extends Usuario implements Serializable {
 	/**
 	 * 
 	 */
-	
-	
 	
 	private static final long serialVersionUID = 7507771529842300606L;
 	Profesor[] profesor = new Profesor[0];
@@ -48,6 +47,11 @@ public class Administracion extends Usuario implements Serializable {
 	}
 
 	
+
+	public Administracion() {
+		super
+		// TODO Auto-generated constructor stub
+	}
 
 	public void crearAlumnos(Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
 		Estudiante e = new Estudiante("h",materias, nombre, sexo, edad, faltas,cedula);
@@ -159,6 +163,19 @@ public class Administracion extends Usuario implements Serializable {
 	public  void verificarExistenciaEstudiantes() {
 		for(int i=0;i<estudiantes.length;i++) {
 			System.out.println(estudiantes[i].getCedula());
+		}
+	}
+	
+
+	
+	@Override
+	public void main(String[] args) throws IOException {
+		Administracion ad= new Administracion();
+		try {
+			ad.buscarUsuario("123");
+		} catch (Excepciones e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
