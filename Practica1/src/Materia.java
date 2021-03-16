@@ -17,7 +17,6 @@ public class Materia implements Serializable {
 	
 	
 	public Materia(String nombre, int creditos, boolean anual, int faltas, boolean aprobado, double[] nota) {
-		super();
 		this.nombre= nombre;
 		this.creditos = creditos;
 		this.anual = anual;
@@ -67,9 +66,6 @@ public class Materia implements Serializable {
 	}
 
 
-	
-
-
 	public double[] getNota() {
 		return nota;
 	}
@@ -79,12 +75,25 @@ public class Materia implements Serializable {
 		this.nota = nota;
 	}
 	
+	public void setNota(int index, double nota) {
+		this.nota[index] = nota;
+	}
+	
 	public void asistenciaUniversidad() {
 		if (faltas>((int)(creditos*1.5*16)*0.3)+1) {
 			 this.aprobado = false;
 		}
 	}
 	
+	public double[] agregarNota(String nombreMateria, double nota) throws Excepciones {
+		if(nombre.equals(nombreMateria) == true) {
+			setNota(Arrays.copyOf(getNota(), getNota().length));
+			setNota(getNota().length-1, nota);
+			return getNota();
+		} else {
+			throw new Excepciones("No esta cursando esta materia o se digitó mal");
+		}
+	}
 	
 
 }
