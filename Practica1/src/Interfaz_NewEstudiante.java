@@ -228,9 +228,9 @@ public class Interfaz_NewEstudiante extends JFrame{
 			int cont=1;
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(txtEst_id.getText().equals("") || txtEst_Pw.getText().equals("") || txtEst_materias.getText().equals("") 
+				if(txtEst_Pw.getText().equals("") || txtEst_materias.getText().equals("") 
 						|| txtEst_Nombre.getText().equals("") || txtEst_edad.getText().equals("") ||
-						txtEst_genero.getText().equals("") || txtEst_promedio.getText().equals("") || txtEst_faltas.getText().equals("")) {
+						txtEst_genero.getText().equals("")) {
 
 					JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
 
@@ -245,9 +245,7 @@ public class Interfaz_NewEstudiante extends JFrame{
 								verificarMateriaAnual(txtEst_materias.getText()), 
 								faltasAleatorio(txtEst_materias.getText()),false, notas);
 						
-						Estudiante est= new Estudiante(new Materia[] {m1},txtEst_Nombre.getText(), txtEst_genero.getText().charAt(0),
-								Integer.parseInt(txtEst_edad.getText()),
-								Integer.parseInt(txtEst_faltas.getText()), txtEst_id.getText());
+						Estudiante est= new Estudiante();
 						
 						if(estudiantes[0]==null) {
 							estudiantes[0]=est;
