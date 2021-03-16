@@ -230,7 +230,7 @@ public class Interfaz_Login extends JFrame{
 
 									aux11=0;
 									Interfaz_admon c= new Interfaz_admon();
-									c.getFrame().setVisible(true);
+									c.getFrame_admon().setVisible(true);
 									Interfaz_Login.this.frame_Login.dispose();
 
 								}else 
