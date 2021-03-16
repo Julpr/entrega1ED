@@ -25,6 +25,29 @@ public abstract class Usuario implements Serializable {
 	Administracion[] a = new Administracion[0];
 	Aula[] t = new Aula[0];
 	Grupo[] g = new Grupo[0];
+	
+	public Usuario(int id, String contraseña) {
+		super();
+		this.id = id;
+		this.contraseña = contraseña;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
 
 	public static void main(String[] args) throws IOException {
 
@@ -43,19 +66,21 @@ public abstract class Usuario implements Serializable {
 		crearFicheroObjetoAdministrador(a9);
 		crearFicheroObjetoProfesor(p6);
 		crearFicheroObjetoEstudiante(e3);
-		crearOnjetoDesdeElFicheroProfesor("Profesores");
-		crearOnjetoDesdeElFicheroAdministracion("Administracion");
-		crearOnjetoDesdeElFicheroEstudiante("Estudiantes");
+		crearObjetoDesdeElFicheroProfesor("Profesores");
+		crearObjetoDesdeElFicheroAdministracion("Administracion");
+		crearObjetoDesdeElFicheroEstudiante("Estudiantes");
 		// File f = new File("C:\\Users\\dcr7j\\eclipse-workspace\\Universidad\\" +
 		// "98070162128"+".dat");
 		// u.leerArchivo(f);
 
 	}
+	
+	
 
-	public static void crearFicheroObjetoEstudiante(Estudiante[] e11) {
+	public void crearFicheroObjetoEstudiante(Estudiante[] e11)  {
 		FileOutputStream fichero = null;
 		try {
-			fichero = new FileOutputStream("src/Universidad_prueba/Usuarios/" + "Estudiantes" + ".obj");
+			fichero = new FileOutputStream("./"+"Estudiantes"+".obj");
 			ObjectOutputStream estudiante = new ObjectOutputStream(fichero);
 			estudiante.writeObject(e11);
 			fichero.close();
@@ -64,12 +89,13 @@ public abstract class Usuario implements Serializable {
 
 		}
 
+
 	}
 
-	public static void crearFicheroObjetoProfesor(Profesor[] p) {
+	public void crearFicheroObjetoProfesor(Profesor[] p)  {
 		FileOutputStream fichero = null;
 		try {
-			fichero = new FileOutputStream("src/Universidad_prueba/Usuarios/" + "Profesores" + ".obj");
+			fichero = new FileOutputStream("./"+"Profesores"+".obj");
 			ObjectOutputStream profesor = new ObjectOutputStream(fichero);
 			profesor.writeObject(p);
 			fichero.close();
@@ -78,12 +104,13 @@ public abstract class Usuario implements Serializable {
 
 		}
 
+
 	}
 
-	public static void crearFicheroObjetoAdministrador(Administracion[] a1) {
+	public void crearFicheroObjetoAdministrador(Administracion[] a1)  {
 		FileOutputStream fichero = null;
 		try {
-			fichero = new FileOutputStream("src/Universidad_prueba/Usuarios/" + "Administracion" + ".obj");
+			fichero = new FileOutputStream("./"+"Administracion"+".obj");
 			ObjectOutputStream administrador = new ObjectOutputStream(fichero);
 			administrador.writeObject(a1);
 			fichero.close();
@@ -92,32 +119,36 @@ public abstract class Usuario implements Serializable {
 
 		}
 
+
 	}
 
-	public static void crearOnjetoDesdeElFicheroEstudiante(String Estudiantes) {
+
+
+
+	public void crearObjetoDesdeElFicheroEstudiante(String Estudiantes) {
 
 		try {
-			ObjectInputStream tarerObjeto = new ObjectInputStream(
-					new FileInputStream("src/Universidad_prueba/Usuarios/" + Estudiantes + ".obj"));
-			Estudiante[] estudianteObjeto = (Estudiante[]) tarerObjeto.readObject();
-			tarerObjeto.close();
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Estudiantes+".obj"));
+			Estudiante[] estudianteObjeto =  (Estudiante[])traerObjeto.readObject();
+			traerObjeto.close();
 			for (Estudiante estudiante : estudianteObjeto) {
 				System.out.println(estudiante);
 			}
+
 
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
+
 	}
 
-	public static void crearOnjetoDesdeElFicheroProfesor(String Profesores) {
+	public void crearObjetoDesdeElFicheroProfesor(String Profesores) {
 
 		try {
-			ObjectInputStream tarerObjeto = new ObjectInputStream(
-					new FileInputStream("src/Universidad_prueba/Usuarios/" + Profesores + ".obj"));
-			Profesor[] profesorObjeto = (Profesor[]) tarerObjeto.readObject();
-			tarerObjeto.close();
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Profesores+".obj"));
+			Profesor[] profesorObjeto =  (Profesor[])traerObjeto.readObject();
+			traerObjeto.close();
 			for (Profesor profesor2 : profesorObjeto) {
 				System.out.println(profesor2);
 			}
@@ -126,33 +157,36 @@ public abstract class Usuario implements Serializable {
 			// TODO: handle exception
 		}
 
+
 	}
 
-	public static void crearOnjetoDesdeElFicheroAdministracion(String Administraciones) {
+	public void crearObjetoDesdeElFicheroAdministracion(String Administraciones) {
 
 		try {
-			ObjectInputStream tarerObjeto = new ObjectInputStream(
-					new FileInputStream("src/Universidad_prueba/Usuarios/" + Administraciones + ".obj"));
-			Administracion[] administracionObjeto = (Administracion[]) tarerObjeto.readObject();
-			tarerObjeto.close();
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Administraciones+".obj"));
+			Administracion[] administracionObjeto =  (Administracion[])traerObjeto.readObject();
+			traerObjeto.close();
 			for (Administracion administracion2 : administracionObjeto) {
 				System.out.println(administracion2);
 			}
+
 
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 
+
 	}
 
 	public void leerArchivo(File f) throws IOException {
 
+
 		try {
 			BufferedReader entrada = new BufferedReader(new FileReader(f));
-			String lextura = entrada.readLine();
-			while (lextura != null) {
-				System.out.println(lextura);
-				lextura = entrada.readLine();
+			String lectura = entrada.readLine();
+			while (lectura!=null) {
+				System.out.println(lectura);
+				lectura = entrada.readLine();
 			}
 			entrada.close();
 		} catch (FileNotFoundException ex) {
@@ -177,4 +211,54 @@ public abstract class Usuario implements Serializable {
 			throw new Excepciones("La materia no está disponible");
 		}
 	}
+	
+	public Usuario buscarUsuario(int id) throws Excepciones{
+        int i = 0;
+        while (i < e.length) {
+            if (id == e[i].getId()) {
+                return e[i];
+            }
+        }
+        i = 0;
+        while (i < p.length) {
+        	if(id == p[i].getId()) {
+        		return p[i];
+        	}
+        }
+        i = 0;
+        while(i < a.length) {
+        	if(id == a[i].getId()) {
+        		return a[i];
+        	}
+        }
+        // No se encontro el ID
+        // Tira error si no encuentra el ID
+        throw new Excepciones("El ID no se encuentra o se digitó mal");
+	}
+	
+	public boolean verificarContraseña(int id, String contraseña) throws Excepciones {
+		if(contraseña.equals(buscarUsuario(id).getContraseña())==true) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void iniciarSesion(int id, String contraseña) throws Excepciones {
+		if(verificarContraseña(id, contraseña) == true) {
+			//Inicia sesión
+		} else {
+			throw new Excepciones("El ID o la contraseña no coinciden");
+		}
+	}
+	
+	public Materia buscarMateria(int id, String nombreMateria) throws Excepciones {
+		for(int i = 0; i < ((Persona) buscarUsuario(id)).getMaterias().length-1; i++) {
+			if(nombreMateria.equals(((Persona) buscarUsuario(id)).getMaterias()[i].getNombre()) == true) {
+				return ((Persona) buscarUsuario(id)).getMaterias()[i];
+			}
+		}
+		throw new Excepciones("No se encontro la materia");
+	}
+
 }
