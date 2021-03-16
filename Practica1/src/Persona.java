@@ -87,9 +87,6 @@ public abstract class Persona implements Serializable {
 	}
 
 	public void cambiarContrasena(String contrasena, String contrasenaNueva) {
-		
-		
-		
 	}
 
 
