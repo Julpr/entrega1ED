@@ -15,20 +15,15 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public abstract class Usuario implements Serializable {
+public class Fichero implements Serializable {
 
 	private static final long serialVersionUID = -9126610298850162622L;
 	protected String contrasena;
-	Estudiante[] e = new Estudiante[0];
+	Estudiante[] e6 = new Estudiante[0];
 	Profesor[] p = new Profesor[0];
 	Administracion[] a = new Administracion[0];
 	Aula[] t = new Aula[0];
 	Grupo[] g = new Grupo[0];
-	
-	public Usuario(String contraseña) {
-		super();
-		this.contrasena = contraseña;
-	}
 
 
 	public String getContraseña() {
@@ -40,7 +35,7 @@ public abstract class Usuario implements Serializable {
 	}
 
 
-	public void main(String[] args) throws IOException {
+	public void main(String[] args) throws IOException, Excepciones {
 
 		Materia m = new Materia("calculo", 2, true, 2, true, new double[] { 2, 4, 3, 5 });
 		Estudiante e = new Estudiante("j",new Materia[] { m }, "Felipe", 'M', 12, 2, "123");
@@ -54,19 +49,105 @@ public abstract class Usuario implements Serializable {
 		Administracion a = new Administracion("1","s",new Profesor[] { p }, new Aula[] { z }, e3, new Grupo[] { g });
 		Administracion a2 = new Administracion("2","m",new Profesor[] { p }, new Aula[] { z }, e3, new Grupo[] { g });
 		Administracion[] a9 = { a, a2 };
+		Fichero us= new Fichero();
 		crearFicheroObjetoAdministrador(a9);
 		crearFicheroObjetoProfesor(p6);
 		crearFicheroObjetoEstudiante(e3);
 		crearObjetoDesdeElFicheroProfesor("Profesores");
 		crearObjetoDesdeElFicheroAdministracion("Administracion");
 		crearObjetoDesdeElFicheroEstudiante("Estudiantes");
+		System.out.println(us.crearOnjetoDesdeElFicheroProfesor("Profesores", "1017261973"));
+		System.out.println(us.crearOnjetoDesdeElFicheroEstudiante("Estudiantes", "123"));
+		System.out.println(us.crearOnjetoDesdeElFicheroAdministracion("Administracion", "1"));
 		// File f = new File("C:\\Users\\dcr7j\\eclipse-workspace\\Universidad\\" +
 		// "98070162128"+".dat");
 		// u.leerArchivo(f);
 
 	}
 	
-	
+	public String crearOnjetoDesdeElFicheroEstudiante(String Estudiantes,String cedula) throws Excepciones {
+
+		try {
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Estudiantes+".obj"));
+			Estudiante[] estudianteObjeto =  (Estudiante[])traerObjeto.readObject();
+			traerObjeto.close();
+			int i = 0;
+			while (i<estudianteObjeto.length&&estudianteObjeto[i].getCedula().compareTo(cedula)!=0) {
+				i++;
+
+			}if (i==estudianteObjeto.length) {
+				return "No existe Estudiante con esa ceula";
+			}else {
+				e6 = Arrays.copyOf(e6, e6.length+1);
+				e6[e6.length-1] = estudianteObjeto[i];
+				return e6[e6.length-1].getCedula();
+
+			}
+
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		throw new Excepciones("No se encontro el Estudiante");
+
+	}
+
+	public String crearOnjetoDesdeElFicheroProfesor(String Profesores,String cedula) throws Excepciones {
+
+		try {
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Profesores+".obj"));
+			Profesor[] profesorObjeto =  (Profesor[])traerObjeto.readObject();
+			traerObjeto.close();
+			int i = 0;
+			while (i<profesorObjeto.length&&profesorObjeto[i].getCedula().compareTo(cedula)!=0) {
+				i++;
+
+			}if (i==profesorObjeto.length) {
+				return "No existe Profesor con esa ceula";
+			}else {
+				p = Arrays.copyOf(p, p.length+1);
+				p[p.length-1] = profesorObjeto[i];
+				return p[p.length-1].getCedula();
+
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		throw new Excepciones("No se encontro el profesor");
+
+	}
+
+	public String crearOnjetoDesdeElFicheroAdministracion(String Administraciones,String cedula) throws Excepciones{
+
+		try {
+			ObjectInputStream traerObjeto = new ObjectInputStream(new FileInputStream("./"+Administraciones+".obj"));
+			Administracion[] administracionObjeto =  (Administracion[])traerObjeto.readObject();
+			traerObjeto.close();
+			int i = 0;
+			while (i<administracionObjeto.length&&administracionObjeto[i].getCedula().compareTo(cedula)!=0) {
+				i++;
+
+			}if (i==administracionObjeto.length) {
+				return "No existe Administrador con esa ceula";
+			}else {
+				a = Arrays.copyOf(a, a.length+1);
+				a[a.length-1] = administracionObjeto[i];
+				return a[a.length-1].getCedula();
+
+			}
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		throw new Excepciones("No se encontro el Administrador");
+
+
+
+	}
 
 	public void crearFicheroObjetoEstudiante(Estudiante[] e11)  {
 		FileOutputStream fichero = null;
@@ -203,23 +284,23 @@ public abstract class Usuario implements Serializable {
 		}
 	}
 	
-	public Usuario buscarUsuario(String cedula) throws Excepciones{
+	public void buscarUsuario(String cedula) throws Excepciones{
         int i = 0;
-        while (i < e.length) {
-            if (cedula == e[i].getCedula()) {
-                return e[i];
+        while (i < e6.length) {
+            if (cedula == e6[i].getCedula()) {
+                 //e6[i];
             }
         }
         i = 0;
         while (i < p.length) {
         	if(cedula == p[i].getCedula()) {
-        		return p[i];
+        		 //p[i];
         	}
         }
         i = 0;
         while(i < a.length) {
         	if(cedula == a[i].getCedula()) {
-        		return a[i];
+        		 //a[i];
         	}
         }
         // No se encontro el ID
@@ -227,7 +308,7 @@ public abstract class Usuario implements Serializable {
         throw new Excepciones("El ID no se encuentra o se digitó mal");
 	}
 	
-	public boolean verificarContraseña(String cedula, String contraseña) throws Excepciones {
+	/*public boolean verificarContraseña(String cedula, String contraseña) throws Excepciones {
 		if(contraseña.equals(buscarUsuario(cedula).getContraseña())==true) {
 			return true;
 		} else {
@@ -250,6 +331,6 @@ public abstract class Usuario implements Serializable {
 			}
 		}
 		throw new Excepciones("No se encontro la materia");
-	}
+	}*/
 
 }

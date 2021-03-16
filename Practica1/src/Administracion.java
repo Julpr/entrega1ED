@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Administracion extends Usuario implements Serializable {
+public class Administracion implements Serializable {
 
 	/**
 	 * 
@@ -18,6 +18,18 @@ public class Administracion extends Usuario implements Serializable {
 	Estudiante[] estudiantes = new Estudiante[0];
 	Grupo[] grupos = new Grupo[0];
 	private String cedula;
+	private String contraseña;
+	
+
+	public Administracion(String cedula, String contraseña, Profesor[] profesor, Aula[] aula, Estudiante[] estudiantes, Grupo[] grupos) {
+		this.contraseña=contraseña;
+		this.cedula=cedula;
+		this.profesor = profesor;
+		this.aula = aula;
+		this.estudiantes = estudiantes;
+		this.grupos = grupos;
+	}
+
 	
 	public void crearFicheroObjetoAdministrador(Administracion[] a1)  {
 		FileOutputStream fichero = null;
@@ -37,21 +49,6 @@ public class Administracion extends Usuario implements Serializable {
 	}
 
 
-	public Administracion(String cedula, String contraseña, Profesor[] profesor, Aula[] aula, Estudiante[] estudiantes, Grupo[] grupos) {
-		super(contraseña);
-		this.cedula=cedula;
-		this.profesor = profesor;
-		this.aula = aula;
-		this.estudiantes = estudiantes;
-		this.grupos = grupos;
-	}
-
-	
-
-	public Administracion() {
-		super
-		// TODO Auto-generated constructor stub
-	}
 
 	public void crearAlumnos(Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
 		Estudiante e = new Estudiante("h",materias, nombre, sexo, edad, faltas,cedula);
@@ -166,17 +163,5 @@ public class Administracion extends Usuario implements Serializable {
 		}
 	}
 	
-
-	
-	@Override
-	public void main(String[] args) throws IOException {
-		Administracion ad= new Administracion();
-		try {
-			ad.buscarUsuario("123");
-		} catch (Excepciones e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 }

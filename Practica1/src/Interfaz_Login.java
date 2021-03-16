@@ -28,7 +28,7 @@ public class Interfaz_Login extends JFrame{
 	private JFrame frame_Login;
 	private JTextField txtLogin_id;
 	private JTextField txtLogin_pw;
-	private Usuario usuarios;
+	private Fichero usuarios;
 
 	public JFrame getFrame_Login() {
 		return frame_Login;
@@ -109,20 +109,12 @@ public class Interfaz_Login extends JFrame{
 
 				else {
 					System.out.println("Hola");
-					
-					int i=0;
-					while(i<usuarios.e.length && 
-							usuarios.e[i].getCedula().compareTo(txtLogin_id.getText())!=0) {
-						i++;	
-					}
-					
-					if(i==usuarios.e.length){
-						JOptionPane.showMessageDialog(null, "La identificación ingresada no existe");
-					}else {
-						Interfaz_estudiante IE= new Interfaz_estudiante();
+							
+					/*Interfaz_estudiante IE= new Interfaz_estudiante();
 						IE.getFrame_Interfaz_estudiante().setVisible(true);
 						frame_Login.dispose();
-					}
+						*/
+					
 
 					
 				}

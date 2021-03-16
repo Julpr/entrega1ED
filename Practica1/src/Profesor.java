@@ -31,7 +31,7 @@ public class Profesor extends Persona implements Serializable{
 		this.estudios = estudios;
 	}
 	
-	public void calcularSueldo(String cedula) throws Excepciones {
+	/*public void calcularSueldo(String cedula) throws Excepciones {
 		int contador = 0;
 		for(int i = 0; i < ((Persona) buscarUsuario(cedula)).getMaterias().length-1; i++) {
 			contador += ((Persona) buscarUsuario(cedula)).getMaterias()[i].getCreditos();
@@ -42,7 +42,7 @@ public class Profesor extends Persona implements Serializable{
 
 	public void agregarNota(String cedula, double nota, String materia) throws Excepciones {
 		buscarUsuario(cedula).buscarMateria(cedula, materia).agregarNota(materia, nota);
-	}
+	}*/
 	
 
 }

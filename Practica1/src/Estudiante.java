@@ -17,10 +17,6 @@ public class Estudiante extends Persona implements Serializable {
 	public void setPromedio(double promedio) {
 		this.promedio = promedio;
 	}
-	
-	//Estudiantes: EstXXX
-	//Profesores: ProXXX
-	///Administrador: AdmXXX
 
 	public Estudiante(String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String TarjetaDeIdentidad) {
 		super(contraseña, materias, nombre, sexo, edad, faltas, TarjetaDeIdentidad);
