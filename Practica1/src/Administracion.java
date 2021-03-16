@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
-public class Administracion implements Serializable {
+public class Administracion extends Usuario implements Serializable {
 
 	/**
 	 * 
@@ -30,8 +30,8 @@ public class Administracion implements Serializable {
 	}
 
 
-	public Administracion(Profesor[] profesor, Aula[] aula, Estudiante[] estudiantes, Grupo[] grupos) {
-		super();
+	public Administracion(int id, String contraseña, Profesor[] profesor, Aula[] aula, Estudiante[] estudiantes, Grupo[] grupos) {
+		super(id, contraseña);
 		this.profesor = profesor;
 		this.aula = aula;
 		this.estudiantes = estudiantes;
