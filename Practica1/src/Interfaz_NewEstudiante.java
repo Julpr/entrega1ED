@@ -164,52 +164,52 @@ public class Interfaz_NewEstudiante extends JFrame{
 
 		JLabel lblEst_titulo = new JLabel("NUEVO ESTUDIANTE");
 		lblEst_titulo.setFont(new Font("Lucida Grande", Font.BOLD, 18));
-		lblEst_titulo.setBounds(95, 6, 209, 25);
+		lblEst_titulo.setBounds(95, 23, 209, 25);
 		frame_newEstudiante.getContentPane().add(lblEst_titulo);
 
 		txtEst_Pw = new JPasswordField();
 		txtEst_Pw.setColumns(10);
-		txtEst_Pw.setBounds(133, 83, 228, 25);
+		txtEst_Pw.setBounds(133, 100, 228, 25);
 		frame_newEstudiante.getContentPane().add(txtEst_Pw);
 
 		JLabel lblEst_Pw = new JLabel("Contraseña");
 		lblEst_Pw.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
-		lblEst_Pw.setBounds(19, 87, 102, 15);
+		lblEst_Pw.setBounds(19, 104, 102, 15);
 		frame_newEstudiante.getContentPane().add(lblEst_Pw);
 
 		JLabel lblEst_Materias = new JLabel("materias");
 		lblEst_Materias.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblEst_Materias.setBounds(29, 117, 92, 15);
+		lblEst_Materias.setBounds(52, 201, 92, 15);
 		frame_newEstudiante.getContentPane().add(lblEst_Materias);
 
 		txtEst_Nombre = new JTextField();
 		txtEst_Nombre.setColumns(10);
-		txtEst_Nombre.setBounds(133, 250, 228, 25);
+		txtEst_Nombre.setBounds(133, 72, 228, 25);
 		frame_newEstudiante.getContentPane().add(txtEst_Nombre);
 
 		JLabel lblEst_Nombre = new JLabel("nombre");
 		lblEst_Nombre.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblEst_Nombre.setBounds(39, 253, 82, 15);
+		lblEst_Nombre.setBounds(39, 75, 82, 15);
 		frame_newEstudiante.getContentPane().add(lblEst_Nombre);
 
 		JLabel lblEst_Genero = new JLabel("Género");
 		lblEst_Genero.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblEst_Genero.setBounds(48, 316, 73, 15);
+		lblEst_Genero.setBounds(48, 167, 73, 15);
 		frame_newEstudiante.getContentPane().add(lblEst_Genero);
 
 		JLabel lblEst_edad = new JLabel("Edad");
 		lblEst_edad.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		lblEst_edad.setBounds(66, 283, 55, 15);
+		lblEst_edad.setBounds(66, 134, 55, 15);
 		frame_newEstudiante.getContentPane().add(lblEst_edad);
 
 		txtEst_edad = new JTextField();
 		txtEst_edad.setColumns(10);
-		txtEst_edad.setBounds(133, 280, 228, 25);
+		txtEst_edad.setBounds(133, 131, 228, 25);
 		frame_newEstudiante.getContentPane().add(txtEst_edad);
 
 		txtEst_genero = new JTextField();
 		txtEst_genero.setColumns(10);
-		txtEst_genero.setBounds(133, 313, 228, 25);
+		txtEst_genero.setBounds(133, 164, 228, 25);
 		frame_newEstudiante.getContentPane().add(txtEst_genero);
 
 
@@ -217,7 +217,7 @@ public class Interfaz_NewEstudiante extends JFrame{
 
 		JButton btnEst_cancelar = new JButton("Cancelar");
 		btnEst_cancelar.setForeground(Color.RED);
-		btnEst_cancelar.setBounds(190, 354, 117, 29);
+		btnEst_cancelar.setBounds(204, 342, 117, 29);
 		frame_newEstudiante.getContentPane().add(btnEst_cancelar);
 		btnEst_cancelar.addActionListener(new ActionListener() {
 
@@ -229,27 +229,27 @@ public class Interfaz_NewEstudiante extends JFrame{
 		});
 
 		JButton btnEst_atras = new JButton("Atrás");
-		btnEst_atras.setBounds(131, 383, 117, 29); //x, y, alto, ancho
+		btnEst_atras.setBounds(134, 371, 117, 29); //x, y, alto, ancho
 		frame_newEstudiante.getContentPane().add(btnEst_atras);
 
 		JCheckBox chckEstudiante_Calculo = new JCheckBox("Cálculo");
-		chckEstudiante_Calculo.setBounds(120, 120, 128, 23);
+		chckEstudiante_Calculo.setBounds(143, 204, 128, 23);
 		frame_newEstudiante.getContentPane().add(chckEstudiante_Calculo);
 
 		JCheckBox chckEstudiante_Fisica = new JCheckBox("Física");
-		chckEstudiante_Fisica.setBounds(120, 144, 128, 23);
+		chckEstudiante_Fisica.setBounds(143, 228, 128, 23);
 		frame_newEstudiante.getContentPane().add(chckEstudiante_Fisica);
 
 		JCheckBox chckEstudiante_Proba = new JCheckBox("Probabilidad");
-		chckEstudiante_Proba.setBounds(120, 168, 128, 23);
+		chckEstudiante_Proba.setBounds(143, 252, 128, 23);
 		frame_newEstudiante.getContentPane().add(chckEstudiante_Proba);
 
 		JCheckBox chckEstudiante_Discretas = new JCheckBox("Sistemas discretos");
-		chckEstudiante_Discretas.setBounds(120, 215, 161, 23);
+		chckEstudiante_Discretas.setBounds(143, 299, 161, 23);
 		frame_newEstudiante.getContentPane().add(chckEstudiante_Discretas);
 
 		JCheckBox chckEstudiante_Edas = new JCheckBox("Estructuras de datos");
-		chckEstudiante_Edas.setBounds(120, 191, 161, 23);
+		chckEstudiante_Edas.setBounds(143, 275, 161, 23);
 		frame_newEstudiante.getContentPane().add(chckEstudiante_Edas);
 		btnEst_atras.addActionListener(new ActionListener() {
 
@@ -263,7 +263,7 @@ public class Interfaz_NewEstudiante extends JFrame{
 		});
 
 		JButton btnEst_aceptar = new JButton("Aceptar");
-		btnEst_aceptar.setBounds(48, 354, 117, 29);
+		btnEst_aceptar.setBounds(62, 342, 117, 29);
 		frame_newEstudiante.getContentPane().add(btnEst_aceptar);
 		btnEst_aceptar.addActionListener(new ActionListener() {
 
