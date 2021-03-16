@@ -90,8 +90,6 @@ public class Interfaz_admon {
 		btnLogin_Cerrar_Sesion.setForeground(Color.RED);
 		btnLogin_Cerrar_Sesion.setBounds(129, 338, 117, 29); //x, y, alto, ancho
 		frame_admon.getContentPane().add(btnLogin_Cerrar_Sesion);
-		
-		
 		btnLogin_Cerrar_Sesion.addActionListener(new ActionListener() {
 
 			@Override
