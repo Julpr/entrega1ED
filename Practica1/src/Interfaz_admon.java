@@ -86,13 +86,13 @@ public class Interfaz_admon {
 			}
 		});
 		
-		JButton btnLogin_cancelar = new JButton("Cerrar sesión");
-		btnLogin_cancelar.setForeground(Color.RED);
-		btnLogin_cancelar.setBounds(129, 338, 117, 29); //x, y, alto, ancho
-		frame_admon.getContentPane().add(btnLogin_cancelar);
+		JButton btnLogin_Cerrar_Sesion = new JButton("Cerrar sesión");
+		btnLogin_Cerrar_Sesion.setForeground(Color.RED);
+		btnLogin_Cerrar_Sesion.setBounds(129, 338, 117, 29); //x, y, alto, ancho
+		frame_admon.getContentPane().add(btnLogin_Cerrar_Sesion);
 		
 		
-		btnLogin_cancelar.addActionListener(new ActionListener() {
+		btnLogin_Cerrar_Sesion.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
