@@ -26,23 +26,22 @@ public class Profesor extends Persona implements Serializable{
 		this.estudios = esudios;
 	}
 
-	public Profesor(int id, String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula, double sueldo, double estudios) {
-		super(id, contraseña, materias, nombre, sexo, edad, faltas,cedula);
-		this.sueldo = sueldo;
+	public Profesor(String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
+		super(contraseña, materias, nombre, sexo, edad, faltas,cedula);
 		this.estudios = estudios;
 	}
 	
-	public void calcularSueldo(int id) throws Excepciones {
+	public void calcularSueldo(String cedula) throws Excepciones {
 		int contador = 0;
-		for(int i = 0; i < ((Persona) buscarUsuario(id)).getMaterias().length-1; i++) {
-			contador += ((Persona) buscarUsuario(id)).getMaterias()[i].getCreditos();
+		for(int i = 0; i < ((Persona) buscarUsuario(cedula)).getMaterias().length-1; i++) {
+			contador += ((Persona) buscarUsuario(cedula)).getMaterias()[i].getCreditos();
 		}
-		setSueldo(contador*((Profesor) buscarUsuario(id)).getEsudios()*100.000);
+		setSueldo(contador*((Profesor) buscarUsuario(cedula)).getEsudios()*100.000);
 		//estudios es el procentaje extra segun los titulos
 	}
 
-	public void agregarNota(int idEstudiante, double nota, String materia) throws Excepciones {
-		buscarUsuario(idEstudiante).buscarMateria(idEstudiante, materia).agregarNota(materia, nota);
+	public void agregarNota(String cedula, double nota, String materia) throws Excepciones {
+		buscarUsuario(cedula).buscarMateria(cedula, materia).agregarNota(materia, nota);
 	}
 	
 

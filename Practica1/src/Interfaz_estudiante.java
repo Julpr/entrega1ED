@@ -22,7 +22,7 @@ public class Interfaz_estudiante extends JFrame {
 
 
 
-	public JFrame getFrame_Aula() {
+	public JFrame getFrame_Interfaz_estudiante() {
 		return frame_interfaz_estudiante;
 	}
 

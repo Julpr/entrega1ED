@@ -24,8 +24,8 @@ public abstract class Persona extends Usuario implements Serializable {
 				+ edad + ", faltas=" + faltas + ", cedula=" + cedula + "]";
 	}
 
-	public Persona(int id, String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
-		super(id, contraseña);
+	public Persona(String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
+		super(contraseña);
 		this.materias = materias;
 		this.nombre = nombre;
 		this.sexo = sexo;
@@ -33,6 +33,8 @@ public abstract class Persona extends Usuario implements Serializable {
 		this.faltas = faltas;
 		this.cedula = cedula;
 	}
+	
+	
 
 	public String getCedula() {
 		return cedula;
@@ -82,9 +84,9 @@ public abstract class Persona extends Usuario implements Serializable {
 		this.faltas = faltas;
 	}
 
-	public void cambiarContraseña(int id, String contraseña, String contraseñaNueva) throws Excepciones {
-		if(verificarContraseña(id, contraseña) == true) {
-			buscarUsuario(id).setContraseña(contraseñaNueva);
+	public void cambiarContraseña(String cedula, String contraseña, String contraseñaNueva) throws Excepciones {
+		if(verificarContraseña(cedula, contraseña) == true) {
+			buscarUsuario(cedula).setContraseña(contraseñaNueva);
 		} else {
 			// Tira error
 		}
@@ -92,9 +94,9 @@ public abstract class Persona extends Usuario implements Serializable {
 		
 	}
 	
-	public void justificarFalta(int id, boolean justificado) throws Excepciones {
+	public void justificarFalta(String cedula, boolean justificado) throws Excepciones {
 		if(justificado = true) {
-			((Persona) buscarUsuario(id)).setFaltas(getFaltas()-1); 
+			((Persona) buscarUsuario(cedula)).setFaltas(getFaltas()-1); 
 		}
 	}
 

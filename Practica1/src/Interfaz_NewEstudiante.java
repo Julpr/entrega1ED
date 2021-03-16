@@ -278,78 +278,69 @@ public class Interfaz_NewEstudiante extends JFrame{
 					//profesor: Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula
 					//Estudiante: Materia[] materias, String nombre, char sexo,  int edad, int faltas,String TarjetaDeIdentidad
 
-					try {
-						double[] notas= {};
-						Materia Calculo = new Materia("Calculo",4,false,0,false,notas); 
-						Materia Fisica = new Materia("Fisica",3,false,0,false,notas);
-						Materia Probabilidad = new Materia("Probabilidad",4,false,0,false,notas);
-						Materia EDAS = new Materia("Estructuras de datos",4,false,0,false,notas);
-						Materia SistemasDiscretas = new Materia("SistemasDiscretas",4,false,0,false,notas);
-						
-						if(chckEstudiante_Calculo.isSelected()) {
-							if(materias[0]==null) {
-								materias[0]=Calculo;
-							}
-						}
-						
-						if(chckEstudiante_Fisica.isSelected()) {
-							if(materias[0]==null) {
-								materias[0]=Fisica;
-							}else {
-								materias=Arrays.copyOf(materias, materias.length-1);
-								materias[materias.length-1]=Fisica;
-							}
-						}
-						
-						if(chckEstudiante_Proba.isSelected()) {
-							if(materias[0]==null) {
-								materias[0]=Probabilidad;
-							}else {
-								materias=Arrays.copyOf(materias, materias.length-1);
-								materias[materias.length-1]=Probabilidad;
-							}
-						}
-						
-						if(chckEstudiante_Discretas.isSelected()) {
-							if(materias[0]==null) {
-								materias[0]=SistemasDiscretas;
-							}else {
-								materias=Arrays.copyOf(materias, materias.length-1);
-								materias[materias.length-1]=SistemasDiscretas;
-							}
-						}
-						if(chckEstudiante_Edas.isSelected()) {
-							if(materias[0]==null) {
-								materias[0]=EDAS;
-							}else {
-								materias=Arrays.copyOf(materias, materias.length-1);
-								materias[materias.length-1]=EDAS;
-							}
-						}
 
-						Estudiante est= new Estudiante();
+					double[] notas= {};
+					Materia Calculo = new Materia("Calculo",4,false,0,false,notas); 
+					Materia Fisica = new Materia("Fisica",3,false,0,false,notas);
+					Materia Probabilidad = new Materia("Probabilidad",4,false,0,false,notas);
+					Materia EDAS = new Materia("Estructuras de datos",4,false,0,false,notas);
+					Materia SistemasDiscretas = new Materia("SistemasDiscretas",4,false,0,false,notas);
 
-						if(estudiantes[0]==null) {
-							estudiantes[0]=est;
-							JOptionPane.showMessageDialog(null, "El estudiante ha sido creado con éxito");
-							limpiarTxt();
-						}else {
-							estudiantes=Arrays.copyOf(estudiantes, estudiantes.length+1);
-							estudiantes[estudiantes.length-1]=est;
-							crearFicheroObjetoEstudiante(estudiantes);
-							JOptionPane.showMessageDialog(null, "El estudiante ha sido creado con éxito");
-							limpiarTxt();
+					if(chckEstudiante_Calculo.isSelected()) {
+						if(materias[0]==null) {
+							materias[0]=Calculo;
 						}
-
-
-					} catch (Excepciones e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
 					}
 
+					if(chckEstudiante_Fisica.isSelected()) {
+						if(materias[0]==null) {
+							materias[0]=Fisica;
+						}else {
+							materias=Arrays.copyOf(materias, materias.length-1);
+							materias[materias.length-1]=Fisica;
+						}
+					}
 
+					if(chckEstudiante_Proba.isSelected()) {
+						if(materias[0]==null) {
+							materias[0]=Probabilidad;
+						}else {
+							materias=Arrays.copyOf(materias, materias.length-1);
+							materias[materias.length-1]=Probabilidad;
+						}
+					}
 
+					if(chckEstudiante_Discretas.isSelected()) {
+						if(materias[0]==null) {
+							materias[0]=SistemasDiscretas;
+						}else {
+							materias=Arrays.copyOf(materias, materias.length-1);
+							materias[materias.length-1]=SistemasDiscretas;
+						}
+					}
+					if(chckEstudiante_Edas.isSelected()) {
+						if(materias[0]==null) {
+							materias[0]=EDAS;
+						}else {
+							materias=Arrays.copyOf(materias, materias.length-1);
+							materias[materias.length-1]=EDAS;
+						}
+					}
 
+					//String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String TarjetaDeIdentidad
+					Estudiante est= new Estudiante("ma", materias, "juan", 'm', 20, 0, "10349");
+
+					if(estudiantes[0]==null) {
+						estudiantes[0]=est;
+						JOptionPane.showMessageDialog(null, "El estudiante ha sido creado con éxito");
+						limpiarTxt();
+					}else {
+						estudiantes=Arrays.copyOf(estudiantes, estudiantes.length+1);
+						estudiantes[estudiantes.length-1]=est;
+						crearFicheroObjetoEstudiante(estudiantes);
+						JOptionPane.showMessageDialog(null, "El estudiante ha sido creado con éxito");
+						limpiarTxt();
+					}
 				}
 			}
 		});

@@ -18,7 +18,6 @@ import java.util.Arrays;
 public abstract class Usuario implements Serializable {
 
 	private static final long serialVersionUID = -9126610298850162622L;
-	protected int id;
 	protected String contrasena;
 	Estudiante[] e = new Estudiante[0];
 	Profesor[] p = new Profesor[0];
@@ -26,42 +25,34 @@ public abstract class Usuario implements Serializable {
 	Aula[] t = new Aula[0];
 	Grupo[] g = new Grupo[0];
 	
-	public Usuario(int id, String contraseña) {
+	public Usuario(String contraseña) {
 		super();
-		this.id = id;
-		this.contraseña = contraseña;
+		this.contrasena = contraseña;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getContraseña() {
-		return contraseña;
+		return contrasena;
 	}
 
 	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+		this.contrasena = contraseña;
 	}
 
 
-	public static void main(String[] args) throws IOException {
+	public void main(String[] args) throws IOException {
 
 		Materia m = new Materia("calculo", 2, true, 2, true, new double[] { 2, 4, 3, 5 });
-		Estudiante e = new Estudiante(new Materia[] { m }, "Felipe", 'M', 12, 2, "123");
-		Estudiante e2 = new Estudiante(new Materia[] { m }, "Carla", 'F', 23, 2, "98070163128");
+		Estudiante e = new Estudiante("j",new Materia[] { m }, "Felipe", 'M', 12, 2, "123");
+		Estudiante e2 = new Estudiante("a",new Materia[] { m }, "Carla", 'F', 23, 2, "98070163128");
 		Estudiante[] e3 = { e, e2 };
-		Profesor p = new Profesor(new Materia[] { m }, "Raul", 'M', 34, 1, "1017261973");
-		Profesor p2 = new Profesor(new Materia[] { m }, "Raul", 'M', 34, 1, "1017261973");
+		Profesor p = new Profesor("m",new Materia[] { m }, "Raul", 'M', 34, 1, "1017261973");
+		Profesor p2 = new Profesor("k",new Materia[] { m }, "Raul", 'M', 34, 1, "1017261973");
 		Profesor[] p6 = { p, p2 };
 		Grupo g = new Grupo(12, p, m, 34);
 		Aula z = new Aula(12, new Materia[] { m }, 4, "Palmas", new Grupo[] { g }, true);
-		Administracion a = new Administracion(new Profesor[] { p }, new Aula[] { z }, e3, new Grupo[] { g });
-		Administracion a2 = new Administracion(new Profesor[] { p }, new Aula[] { z }, e3, new Grupo[] { g });
+		Administracion a = new Administracion("1","s",new Profesor[] { p }, new Aula[] { z }, e3, new Grupo[] { g });
+		Administracion a2 = new Administracion("2","m",new Profesor[] { p }, new Aula[] { z }, e3, new Grupo[] { g });
 		Administracion[] a9 = { a, a2 };
 		crearFicheroObjetoAdministrador(a9);
 		crearFicheroObjetoProfesor(p6);
@@ -212,22 +203,22 @@ public abstract class Usuario implements Serializable {
 		}
 	}
 	
-	public Usuario buscarUsuario(int id) throws Excepciones{
+	public Usuario buscarUsuario(String cedula) throws Excepciones{
         int i = 0;
         while (i < e.length) {
-            if (id == e[i].getId()) {
+            if (cedula == e[i].getCedula()) {
                 return e[i];
             }
         }
         i = 0;
         while (i < p.length) {
-        	if(id == p[i].getId()) {
+        	if(cedula == p[i].getCedula()) {
         		return p[i];
         	}
         }
         i = 0;
         while(i < a.length) {
-        	if(id == a[i].getId()) {
+        	if(cedula == a[i].getCedula()) {
         		return a[i];
         	}
         }
@@ -236,26 +227,26 @@ public abstract class Usuario implements Serializable {
         throw new Excepciones("El ID no se encuentra o se digitó mal");
 	}
 	
-	public boolean verificarContraseña(int id, String contraseña) throws Excepciones {
-		if(contraseña.equals(buscarUsuario(id).getContraseña())==true) {
+	public boolean verificarContraseña(String cedula, String contraseña) throws Excepciones {
+		if(contraseña.equals(buscarUsuario(cedula).getContraseña())==true) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	public void iniciarSesion(int id, String contraseña) throws Excepciones {
-		if(verificarContraseña(id, contraseña) == true) {
+	public void iniciarSesion(String cedula, String contraseña) throws Excepciones {
+		if(verificarContraseña(cedula, contraseña) == true) {
 			//Inicia sesión
 		} else {
 			throw new Excepciones("El ID o la contraseña no coinciden");
 		}
 	}
 	
-	public Materia buscarMateria(int id, String nombreMateria) throws Excepciones {
-		for(int i = 0; i < ((Persona) buscarUsuario(id)).getMaterias().length-1; i++) {
-			if(nombreMateria.equals(((Persona) buscarUsuario(id)).getMaterias()[i].getNombre()) == true) {
-				return ((Persona) buscarUsuario(id)).getMaterias()[i];
+	public Materia buscarMateria(String cedula, String nombreMateria) throws Excepciones {
+		for(int i = 0; i < ((Persona) buscarUsuario(cedula)).getMaterias().length-1; i++) {
+			if(nombreMateria.equals(((Persona) buscarUsuario(cedula)).getMaterias()[i].getNombre()) == true) {
+				return ((Persona) buscarUsuario(cedula)).getMaterias()[i];
 			}
 		}
 		throw new Excepciones("No se encontro la materia");

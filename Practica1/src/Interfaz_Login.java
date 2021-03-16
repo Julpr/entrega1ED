@@ -28,7 +28,7 @@ public class Interfaz_Login extends JFrame{
 	private JFrame frame_Login;
 	private JTextField txtLogin_id;
 	private JTextField txtLogin_pw;
-
+	private Estudiante[] estudiantes= {};
 
 	public JFrame getFrame_Login() {
 		return frame_Login;
@@ -111,156 +111,21 @@ public class Interfaz_Login extends JFrame{
 					JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
 
 				else {
-
-					switch(txtLogin_id.getText().substring(0, 3)) {
-					case "est":
-						int i=1, aux=1;
-						FileReader fr=null;
-						BufferedReader b=null;
-
-
-						while(i>=0 && aux!=0) {
-							File f=new File("src/Practica1/usuarios/estudiante"+i+".txt");
-							try {
-								fr= new FileReader(f);
-								b= new BufferedReader(fr);
-
-								String linea;
-
-								if((linea=b.readLine()).compareTo(txtLogin_id.getText())==0 && 
-										(linea=b.readLine()).compareTo(txtLogin_pw.getText())==0) {
-
-									aux=0;
-									Interfaz_estudiante c= new Interfaz_estudiante();
-									c.getFrame_Aula().setVisible(true);
-									Interfaz_Login.this.frame_Login.dispose();
-
-								}else 
-									i++;
-
-							}catch(FileNotFoundException e1) {
-								JOptionPane.showMessageDialog(null, "Contraseña o id incorrectos");
-								i++;
-								aux=0;
-
-							}catch(IOException e1) {
-								System.out.println("No se pudo leer el fichero");
-								i++;
-								aux=0;
-
-							}finally {
-								try {
-									if(fr!=null) {
-										b.close();
-										fr.close();
-									}
-								}catch(IOException e1){
-									System.out.println("No se pudo cerrar el fichero");
-								}
-							}
-
-						}
-
-						break;
-						
-					case "pro":
-						int i1=1, aux1=1;
-						FileReader fr1=null;
-						BufferedReader b1=null;
-
-						while(i1>=0 && aux1!=0) {
-							File f=new File("src/Practica1/usuarios/profesor"+i1+".txt");
-							try {
-								fr1= new FileReader(f);
-								b1= new BufferedReader(fr1);
-
-								String linea;
-
-								if((linea=b1.readLine()).compareTo(txtLogin_id.getText())==0 && 
-										(linea=b1.readLine()).compareTo(txtLogin_pw.getText())==0) {
-
-									aux1=0;
-									Interfaz_profesor c= new Interfaz_profesor();
-									c.getFrame().setVisible(true);
-									Interfaz_Login.this.frame_Login.dispose();
-
-								}else 
-									i1++;
-
-							}catch(FileNotFoundException e1) {
-								JOptionPane.showMessageDialog(null, "Contraseña o id incorrectos");
-								i1++;
-								aux1=0;
-
-							}catch(IOException e1) {
-								System.out.println("No se pudo leer el fichero");
-								i1++;
-								aux1=0;
-
-							}finally {
-								try {
-									if(fr1!=null) {
-										b1.close();
-										fr1.close();
-									}
-								}catch(IOException e1){
-									System.out.println("No se pudo cerrar el fichero");
-								}
-							}
-
-						}
-
-						break;
-					case "adm":
-						int i11=1, aux11=1;
-						FileReader fr11=null;
-						BufferedReader b11=null;
-
-
-						while(i11>=0 && aux11!=0) {
-							File f=new File("src/Practica1/usuarios/admon"+i11+".txt");
-							try {
-								fr11= new FileReader(f);
-								b11= new BufferedReader(fr11);
-
-								String linea;
-
-								if((linea=b11.readLine()).compareTo(txtLogin_id.getText())==0 
-										&& (linea=b11.readLine()).compareTo(txtLogin_pw.getText())==0) {
-
-									aux11=0;
-									Interfaz_admon c= new Interfaz_admon();
-									c.getFrame_admon().setVisible(true);
-									Interfaz_Login.this.frame_Login.dispose();
-
-								}else 
-									i11++;
-
-							}catch(FileNotFoundException e1) {
-								JOptionPane.showMessageDialog(null, "Contraseña o id incorrectos");
-								i11++;
-								aux11=0;
-
-							}catch(IOException e1) {
-								System.out.println("No se pudo leer el fichero");
-								i11++;
-								aux11=0;
-
-							}finally {
-								try {
-									if(fr11!=null) {
-										b11.close();
-										fr11.close();
-									}
-								}catch(IOException e1){
-									System.out.println("No se pudo cerrar el fichero");
-								}
-							}
-							break;
-							
-
-						}
+					int i=0;
+					while(i<estudiantes.length && 
+							estudiantes[i].getCedula().compareTo(txtLogin_id.getText())!=0) {
+						i++;	
 					}
+					
+					if(i==estudiantes.length){
+						JOptionPane.showMessageDialog(null, "La identificación ingresada no existe");
+					}else {
+						Interfaz_estudiante IE= new Interfaz_estudiante();
+						IE.getFrame_Interfaz_estudiante().setVisible(true);
+						frame_Login.dispose();
+					}
+
+					
 				}
 			}
 		});
@@ -305,20 +170,6 @@ public class Interfaz_Login extends JFrame{
 
 		};
 		btnLogin_addEst.addActionListener(newEstudiante);
-
-		/*btnLogin_addEst.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				NewEstudiante addEstudiante= new NewEstudiante();
-				addEstudiante.setVisible(true);
-				dispose();
-			}
-
-		});*/
-
-
 
 	}
 }

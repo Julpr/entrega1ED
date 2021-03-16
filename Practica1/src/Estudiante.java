@@ -17,14 +17,15 @@ public class Estudiante extends Persona implements Serializable {
 	public void setPromedio(double promedio) {
 		this.promedio = promedio;
 	}
+	
+	//Estudiantes: EstXXX
+	//Profesores: ProXXX
+	///Administrador: AdmXXX
 
-	public Estudiante(int id, String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String TarjetaDeIdentidad) {
-		super(id, contraseña, materias, nombre, sexo, edad, faltas, TarjetaDeIdentidad);
+	public Estudiante(String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String TarjetaDeIdentidad) {
+		super(contraseña, materias, nombre, sexo, edad, faltas, TarjetaDeIdentidad);
 	}
 
-	public Estudiante() {
-		
-	}
 
 	public double calcularProm(Materia[] materias, int contadorMaterias, int contadorNotas, double prom) {
 		if(contadorMaterias > materias.length-1) {

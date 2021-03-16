@@ -95,6 +95,34 @@ public class Materia implements Serializable {
 			throw new Excepciones("No esta cursando esta materia o se digitó mal");
 		}
 	}
+
+
+	public int getCreditos() {
+		return creditos;
+	}
+
+
+	public void setCreditos(int creditos) {
+		this.creditos = creditos;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	
 	
 
 }

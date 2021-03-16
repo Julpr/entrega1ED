@@ -10,11 +10,15 @@ public class Administracion extends Usuario implements Serializable {
 	/**
 	 * 
 	 */
+	
+	
+	
 	private static final long serialVersionUID = 7507771529842300606L;
 	Profesor[] profesor = new Profesor[0];
 	Aula[] aula = new Aula[0];
 	Estudiante[] estudiantes = new Estudiante[0];
 	Grupo[] grupos = new Grupo[0];
+	private String cedula;
 	
 	public void crearFicheroObjetoAdministrador(Administracion[] a1)  {
 		FileOutputStream fichero = null;
@@ -28,10 +32,15 @@ public class Administracion extends Usuario implements Serializable {
 
 		}
 	}
+	
+	public String getCedula() {
+		return cedula;
+	}
 
 
-	public Administracion(int id, String contraseña, Profesor[] profesor, Aula[] aula, Estudiante[] estudiantes, Grupo[] grupos) {
-		super(id, contraseña);
+	public Administracion(String cedula, String contraseña, Profesor[] profesor, Aula[] aula, Estudiante[] estudiantes, Grupo[] grupos) {
+		super(contraseña);
+		this.cedula=cedula;
 		this.profesor = profesor;
 		this.aula = aula;
 		this.estudiantes = estudiantes;
@@ -41,7 +50,7 @@ public class Administracion extends Usuario implements Serializable {
 	
 
 	public void crearAlumnos(Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
-		Estudiante e = new Estudiante(materias, nombre, sexo, edad, faltas,cedula);
+		Estudiante e = new Estudiante("h",materias, nombre, sexo, edad, faltas,cedula);
 		estudiantes = Arrays.copyOf(estudiantes, estudiantes.length+1);
 		estudiantes[estudiantes.length-1] = e;
 
@@ -60,8 +69,9 @@ public class Administracion extends Usuario implements Serializable {
 		}
 	}
 
-	public void crearProfesor(Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
-		Profesor p = new Profesor(materias, nombre, sexo, edad, faltas, cedula);
+	
+	public void crearProfesor(String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
+		Profesor p = new Profesor(contraseña,materias, nombre, sexo, edad, faltas, cedula);
 		profesor = Arrays.copyOf(profesor, profesor.length+1);
 		profesor[profesor.length-1] = p;
 	}
@@ -130,6 +140,7 @@ public class Administracion extends Usuario implements Serializable {
 
 		}
 	}
+	
 
 	public void modificarGrupos(int codigo, int codigoNuevo, Profesor profesor,Materia materia,int capacidad) {
 		int i = 0 ;
@@ -142,9 +153,13 @@ public class Administracion extends Usuario implements Serializable {
 			grupos[i].setCodigo(codigoNuevo);
 			grupos[i].setProfesor(profesor);
 			grupos[i].setMateria(materia);
-
-
-
 		}
 	}
+	
+	public  void verificarExistenciaEstudiantes() {
+		for(int i=0;i<estudiantes.length;i++) {
+			System.out.println(estudiantes[i].getCedula());
+		}
+	}
+	
 }
