@@ -33,10 +33,6 @@ public abstract class Persona extends Usuario implements Serializable {
 		this.faltas = faltas;
 		this.cedula = cedula;
 	}
-	
-	public Persona() {
-		
-	}
 
 	public String getCedula() {
 		return cedula;
