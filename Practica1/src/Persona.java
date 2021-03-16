@@ -3,7 +3,7 @@
 import java.io.Serializable;
 import java.util.Arrays;
 
-public abstract class Persona implements Serializable {
+public abstract class Persona extends Usuario implements Serializable {
 
 	/**
 	 * 
@@ -24,8 +24,8 @@ public abstract class Persona implements Serializable {
 				+ edad + ", faltas=" + faltas + ", cedula=" + cedula + "]";
 	}
 
-	public Persona(Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
-		super();
+	public Persona(int id, String contraseña, Materia[] materias, String nombre, char sexo, int edad, int faltas,String cedula) {
+		super(id, contraseña);
 		this.materias = materias;
 		this.nombre = nombre;
 		this.sexo = sexo;
@@ -86,9 +86,21 @@ public abstract class Persona implements Serializable {
 		this.faltas = faltas;
 	}
 
-	public void cambiarContrasena(String contrasena, String contrasenaNueva) {
+	public void cambiarContraseña(int id, String contraseña, String contraseñaNueva) throws Excepciones {
+		if(verificarContraseña(id, contraseña) == true) {
+			buscarUsuario(id).setContraseña(contraseñaNueva);
+		} else {
+			// Tira error
+		}
+		
+		
 	}
-
+	
+	public void justificarFalta(int id, boolean justificado) throws Excepciones {
+		if(justificado = true) {
+			((Persona) buscarUsuario(id)).setFaltas(getFaltas()-1); 
+		}
+	}
 
 }
 
